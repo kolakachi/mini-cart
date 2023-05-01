@@ -1,0 +1,24 @@
+{
+    "name": "kola/mini-framework",
+    "description": "A mini MVC framework",
+    "authors": [
+        {
+            "name": "Kolawole",
+            "email": "kolakachi@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.5",
+        "illuminate/database": "8.83.9",
+        "illuminate/events": "8.83.9",
+        "illuminate/pagination": "8.83.9",
+        "stripe/stripe-php": "^10.12",
+        "phpunit/phpunit": "^9.6",
+        "guzzlehttp/guzzle": "^7.5"
+    }
+}
