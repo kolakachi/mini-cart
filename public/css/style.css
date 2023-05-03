@@ -1,0 +1,46 @@
+.card-footer {
+    background: #FFFF;
+    border: none;
+}
+.card {
+    background-color: #fff;
+    box-shadow: 0 0.077rem 0.154rem rgba(0,0,0,.1);
+    border-radius: 0.231rem;
+}
+
+.btn-outline-primary a:hover svg {
+    color : #FFF;
+}
+
+.btn-outline-primary a svg {
+    color : #0d6efd;
+}
+
+.product-cart-img{
+    height: 80px;
+}
+
+.media {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.product-cart-title .media h5 {
+      font-size: 15px;
+      line-height: 1.3333333333;
+      font-weight: 500;
+      margin-bottom: 5px;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.page-loader {
+    height: 300px !important;
+    width: 100% !important;
+    display: flex ;
+    align-items: center ;
+    justify-content: center ;
+}
