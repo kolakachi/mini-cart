@@ -20,9 +20,9 @@ Update your stripe keys in .env
   
 run `php migrations.php` to migrate tables  
 run `php seeder.php` to generate documentation  
-cd into public folder and run `php -S localhost:8080` to startup the application  
+cd into public folder   run `php -S localhost:8080` to startup the application  
   
-##API Documentation  
+## API Documentation  
   
 https://documenter.getpostman.com/view/3587677/2s93eVWthH  
   
