@@ -17,7 +17,11 @@ const app = Vue.createApp({
             stripeKey: '',
             stripe:{},
             cardElement:{},
-            pageIsLoading: true
+            pageIsLoading: true,
+            deleteButtonIsLoading: false,
+            selectedItem: 0,
+            paymentButtonIsLoading: false,
+
         }
     },
     watch: {
@@ -139,6 +143,8 @@ const app = Vue.createApp({
                 });
         },
         deletItemFromOrder(productId) {
+            this.selectedItem = productId;
+            this.deleteButtonIsLoading = true;
             let url = `/orders/${this.orderId}/items`;
             axios
                 .delete(url, {data:{item:{product_id: productId}}})
@@ -150,8 +156,12 @@ const app = Vue.createApp({
                         title: "Success",
                         message: response.data.message,
                     });
+                    this.selectedItem = 0;
+                    this.deleteButtonIsLoading = false;
                 })
                 .catch((err) => {
+                    this.selectedItem = 0;
+                    this.deleteButtonIsLoading = false;
                     this.$notify.error({
                         title: "Error",
                         message: "Unable to delete item from order",
@@ -202,11 +212,13 @@ const app = Vue.createApp({
 
                 return;
             }
+            this.paymentButtonIsLoading = true;
             this.stripe
                 .createToken(this.cardElement).then((result) => {
 
                     if (result.error) {
                         // Inform the customer that there was an error.
+                        this.paymentButtonIsLoading = false;
                         this.$notify.error({
                             title: "Error",
                             message: "Unable to complete transaction, Encountered an error",
@@ -230,6 +242,7 @@ const app = Vue.createApp({
             axios
                 .post(url,{stripe_token: token, email: this.custumerEmail})
                 .then((response) => {
+                    this.paymentButtonIsLoading = false;
                     localStorage.clear();
                     this.orderId = "";
                     this.cart = [];
@@ -243,6 +256,7 @@ const app = Vue.createApp({
                     });
                 })
                 .catch((err) => {
+                    this.paymentButtonIsLoading = false;
                     this.$notify.error({
                         title: "Error",
                         message: "Unable to complete payment",

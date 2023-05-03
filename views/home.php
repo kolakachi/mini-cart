@@ -119,7 +119,10 @@
                                     <td>{{ orderItem.quantity }}</td>
                                     <td class="text-center subtotal">${{ orderItem.product.price * orderItem.quantity }}</td>
                                     <td class="actions">
-                                        <button type="button" class="btn btn-danger float-end" @click="deletItemFromOrder(orderItem.product.id)">
+                                        <button :disabled="deleteButtonIsLoading" type="button" class="btn btn-danger float-end" @click="deletItemFromOrder(orderItem.product.id)">
+                                            <span class="spinner-border" v-if="deleteButtonIsLoading && (selectedItem == orderItem.product.id)" role="status" style="width: 12px; height:12px">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </span>
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
@@ -150,7 +153,14 @@
 
                                 <!-- We'll put the error messages in this element -->
                                 <div id="card-errors" role="alert" class="alert mb-2 text-danger"></div>
-                                <button type="button" class="btn btn-primary rounded-pill m-0 col-md-6 col-lg-6 col-xl-6" @click="createPaymentMethod">Pay</button>
+                                <button type="button"
+                                    class="btn btn-primary rounded-pill m-0 col-md-6 col-lg-6 col-xl-6"
+                                    :disabled="paymentButtonIsLoading"
+                                    @click="createPaymentMethod">
+                                    <span class="spinner-border" v-if="paymentButtonIsLoading" role="status" style="width: 12px; height:12px">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </span>
+                                    Pay</button>
                             </div>
                         </div>
                     </div>
