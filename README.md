@@ -22,7 +22,7 @@ run `php migrations.php` to migrate tables
 run `php seeder.php` to generate documentation  
 run `php -S localhost:8080` to startup the application  
   
-##Documentation  
+##API Documentation  
   
 https://documenter.getpostman.com/view/3587677/2s93eVWthH  
   
