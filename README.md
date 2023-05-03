@@ -1,6 +1,6 @@
 ## Requirements  
   
-PHP 7.3+  
+PHP 7.4+  
 Composer  
 Access to CLI  
 
@@ -20,7 +20,8 @@ Update your stripe keys in .env
   
 run `php migrations.php` to migrate tables  
 run `php seeder.php` to generate documentation  
-cd into public folder   run `php -S localhost:8080` to startup the application  
+cd into public folder   
+run `php -S localhost:8080` to startup the application  
   
 ## API Documentation  
   
